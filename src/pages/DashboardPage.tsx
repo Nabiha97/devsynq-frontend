@@ -8,7 +8,7 @@ import {
   Home, Target, GraduationCap, Mail, Settings, Bell,
   ExternalLink, Flame, TrendingUp, Code2, Activity, BookOpen,
   Github, User, ChevronRight, ChevronDown, ChevronUp, Zap,
-  CheckCircle, Flag, X, Menu, Plus,
+  CheckCircle, Flag, X, Menu,
 } from "lucide-react";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -30,21 +30,21 @@ import {
 //   { week: "W7", solved: 14 }, { week: "W8", solved: 22 },
 // ];
 
-const habits = [
-  { name: "Daily Coding", percent: 85, streak: 12 },
-  { name: "Reading Docs", percent: 72, streak: 7 },
-  { name: "Exercise", percent: 60, streak: 5 },
-  { name: "Code Review", percent: 45, streak: 3 },
-  { name: "System Design", percent: 38, streak: 2 },
-];
+// const habits = [
+//   { name: "Daily Coding", percent: 85, streak: 12 },
+//   { name: "Reading Docs", percent: 72, streak: 7 },
+//   { name: "Exercise", percent: 60, streak: 5 },
+//   { name: "Code Review", percent: 45, streak: 3 },
+//   { name: "System Design", percent: 38, streak: 2 },
+// ];
 
-const w3courses = [
-  { name: "JavaScript Advanced", percent: 90 },
-  { name: "CSS Grid & Flexbox", percent: 75 },
-  { name: "React Fundamentals", percent: 58 },
-  { name: "Node.js & Express", percent: 32 },
-  { name: "SQL Databases", percent: 20 },
-];
+// const w3courses = [
+//   { name: "JavaScript Advanced", percent: 90 },
+//   { name: "CSS Grid & Flexbox", percent: 75 },
+//   { name: "React Fundamentals", percent: 58 },
+//   { name: "Node.js & Express", percent: 32 },
+//   { name: "SQL Databases", percent: 20 },
+// ];
 
 const upcomingCheckpoints = [
   { title: "Complete 3 LeetCode problems", subtitle: "Medium difficulty · Due today", time: "11:59 PM", done: false },
@@ -488,7 +488,7 @@ function DashboardHome({
       <div className="bg-white rounded-2xl p-5 shadow-sm">
         <p className="text-sm font-bold text-[#2F4156] mb-4"
           style={{ fontFamily: "'Plus Jakarta Sans',sans-serif" }}>Habit Completion</p>
-{(me?.habits ?? []).slice(0, 3).map(h => (
+{(me?.habits ?? []).slice(0, 3).map((h: any) => (
   <ProgressBar
     key={h.id}
     name={h.name}
@@ -498,7 +498,7 @@ function DashboardHome({
 ))}
 {(me?.habits?.length ?? 0) > 3 && (
   <ExpandSection label={`+${(me?.habits?.length ?? 0) - 3} more habits`}>
-    {(me?.habits ?? []).slice(3).map(h => (
+    {(me?.habits ?? []).slice(3).map((h: any) =>(
       <ProgressBar
         key={h.id}
         name={h.name}
@@ -615,7 +615,7 @@ data={
       </ExpandSection>
 
       <ExpandSection label="W3Schools learning progress">
-{(me?.courseProgress ?? []).map(c => (
+{(me?.courseProgress ?? []).map((c: any) => (
   <ProgressBar
     key={c.id}
     name={`${c.courseName} — ${c.lessonName}`}
@@ -684,21 +684,21 @@ function CheckpointsPage() {
 
 // ─── Skills page ───────────────────────────────────────────────────────────────
 
-const skillRecs = [
-  { name: "TypeScript", reason: "Required in 89% of senior frontend listings", demand: "Very High", tag: "Frontend" },
-  { name: "Docker & Kubernetes", reason: "Standard for backend and DevOps roles", demand: "High", tag: "DevOps" },
-  { name: "System Design", reason: "Core competency tested in senior interviews", demand: "High", tag: "Architecture" },
-  { name: "GraphQL", reason: "Growing adoption across full-stack teams", demand: "Medium", tag: "API" },
-  { name: "Rust", reason: "Emerging systems language with salary premium", demand: "Growing", tag: "Systems" },
-  { name: "AWS Cloud Practitioner", reason: "High-ROI cert for backend engineers", demand: "High", tag: "Cloud" },
-];
+// const skillRecs = [
+//   { name: "TypeScript", reason: "Required in 89% of senior frontend listings", demand: "Very High", tag: "Frontend" },
+//   { name: "Docker & Kubernetes", reason: "Standard for backend and DevOps roles", demand: "High", tag: "DevOps" },
+//   { name: "System Design", reason: "Core competency tested in senior interviews", demand: "High", tag: "Architecture" },
+//   { name: "GraphQL", reason: "Growing adoption across full-stack teams", demand: "Medium", tag: "API" },
+//   { name: "Rust", reason: "Emerging systems language with salary premium", demand: "Growing", tag: "Systems" },
+//   { name: "AWS Cloud Practitioner", reason: "High-ROI cert for backend engineers", demand: "High", tag: "Cloud" },
+// ];
 
-const demandStyles: Record<string, string> = {
-  "Very High": "bg-[#2F4156] text-white",
-  "High": "bg-[#567C8D] text-white",
-  "Medium": "bg-[#C8D9E6] text-[#2F4156]",
-  "Growing": "bg-[#F5EFEB] text-[#2F4156] border border-[#C8D9E6]",
-};
+// const demandStyles: Record<string, string> = {
+//   "Very High": "bg-[#2F4156] text-white",
+//   "High": "bg-[#567C8D] text-white",
+//   "Medium": "bg-[#C8D9E6] text-[#2F4156]",
+//   "Growing": "bg-[#F5EFEB] text-[#2F4156] border border-[#C8D9E6]",
+// };
 
 function SkillsPage({ me }: { me: any }) {
   return (

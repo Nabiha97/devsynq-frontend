@@ -1,5 +1,4 @@
-import { gql } from "@apollo/client";
-import { useQuery } from "@apollo/client/react";
+import { gql, useQuery } from "@apollo/client";
 
 export const ME_QUERY = gql`
   query Me {
@@ -34,6 +33,45 @@ export const ME_QUERY = gql`
   }
 `;
 
+type Habit = {
+  id: string;
+  name: string;
+  targetFrequency: number;
+  currentStreak: number;
+  completedToday: boolean;
+};
+
+type CourseProgress = {
+  id: string;
+  courseName: string;
+  lessonName: string;
+  completedAt: string;
+};
+
+type LeetCodeSolved = {
+  total: number;
+  easy: number;
+  medium: number;
+  hard: number;
+};
+
+type Me = {
+  id: string;
+  name: string;
+  email: string;
+  githubConnected: boolean;
+  leetcodeConnected: boolean;
+  commitsToday?: number;
+  leetcodeSolved?: LeetCodeSolved;
+  habits?: Habit[];
+  courseProgress?: CourseProgress[];
+  skillRecommendations?: string[];
+};
+
+type MeQueryResult = {
+  me: Me;
+};
+
 export function useMe() {
-  return useQuery(ME_QUERY, { fetchPolicy: "network-only" });
+  return useQuery<MeQueryResult>(ME_QUERY, { fetchPolicy: "network-only" });
 }

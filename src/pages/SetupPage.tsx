@@ -85,9 +85,10 @@ function SetupPage({ onComplete }: { onComplete: () => void }) {
   const [setup, setSetup] = useState<SetupState>({
     leetcode: "", leetcodeStatus: "idle", habitStatus: "idle", w3Status: "idle",
   });
-  const { data, loading } = useMe();
+  const { data } = useMe();
+
   const githubConnected = data?.me?.githubConnected ?? false;
-  const userName = data?.me?.name ?? "there";
+  // const userName = data?.me?.name ?? "there";
   const [habitName, setHabitName] = useState("Daily Coding");
   const [courseName, setCourseName] = useState("JavaScript Advanced");
 const [addCourse] = useMutation(ADD_COURSE);
